@@ -43,9 +43,9 @@ app.use(function (req, res, next) {
 app.use('/', handler);
 
 
-if (process.env.TELEGRAMALYZER_DB_SERVICE_HOST) {
+if (process.env.TELEG_SERVICE_PORT_WEB) {
 
-  var server_port =   process.env.TELEGRAMALYZER_DB_SERVICE_PORT_WEB
+  var server_port =   process.env.TELEG_SERVICE_PORT_WEB
   //var server_ip_address = process.env.TELEGRAMALYZER_SERVER_SERVICE_HOST
   var server_ip_address = '0.0.0.0'
 

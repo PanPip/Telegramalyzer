@@ -1,0 +1,21 @@
+{
+  "name": "telegramalyzer-server",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+  "start": "node main.js"
+},
+  "main": "main.js",
+  "dependencies": {
+    "atob": "^2.1.1",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-rate-limit": "^2.11.0",
+    "js-base64": "^2.4.5",
+    "mongodb": "^3.1.0-beta4",
+    "mongoose": "^5.1.1"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}

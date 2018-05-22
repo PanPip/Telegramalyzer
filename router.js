@@ -9,7 +9,7 @@ var dbController = require('./db-handler.js')
 // Home page route.
 router.get('/', function (req, res) {
     console.log("Received get request")
-    res.send('Wiki home page');
+    res.send("this is not the droid you're looking for");
 })
 
 // About page route.

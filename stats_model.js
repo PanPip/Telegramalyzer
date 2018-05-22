@@ -13,6 +13,8 @@ var statsSchema = new Schema({
     weekdayChartData: [Number],
     weekdayChartLabel: [String],
     heartNumber:String,
+    emojiChartLabel:[String],
+    emojiChartData:[Number],
     date: { type: Date, default: Date.now },
 });
 

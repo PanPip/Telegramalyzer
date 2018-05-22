@@ -13,7 +13,7 @@ var db_name = "tele"
 if (process.env.MONGODB_SERVICE_HOST) {
     console.log("Using environment variables")
     //db_name = process.env.MONGODB_DATABASE
-    mongodb_connection_string = process.env.MONGODB_SERVICE_HOST +'/'+ db_name;
+    mongodb_connection_string = process.env.MONGODB_SERVICE_HOST + '/' + db_name;
     var user = encodeURIComponent(process.env.MONGODB_USER);
     var password = encodeURIComponent(process.env.MONGODB_PASSWORD);
 
@@ -31,7 +31,7 @@ var authMechanism = 'DEFAULT';
 
 //Set up default mongoose connection
 var mongoDB = f('mongodb://%s:%s@%s?authMechanism=%s',
-    user, password, mongodb_connection_string,authMechanism);
+    user, password, mongodb_connection_string, authMechanism);
 mongoose.connect(mongoDB);
 
 // Get Mongoose to use the global promise library
@@ -64,6 +64,7 @@ function saveStatsToDB(req, res, next) {
             allDaysChartData: req.parsedChart.allDaysChartData, allDaysChartLabel: req.parsedChart.allDaysChartLabel,
             monthsChartData: req.parsedChart.monthsChartData, monthsChartLabel: req.parsedChart.monthsChartLabel,
             weekdayChartData: req.parsedChart.weekdayChartData, weekdayChartLabel: req.parsedChart.weekdayChartLabel,
+            emojiChartLabel: req.parsedChart.emojiChartLabel, emojiChartData: req.parsedChart.emojiChartData,
             heartNumber: req.parsedChart.heartNumber
         });
 

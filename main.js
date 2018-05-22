@@ -20,14 +20,21 @@ app.use(limiter);
 
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
+app.use(function(req, res, next) {
+  var allowedOrigins = ['https://telegramalyzer.com', 'https://www.telegramalyzer.com'];
+  var origin = req.headers.origin;
+  if(allowedOrigins.indexOf(origin) > -1){
+       res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  next();
+});
+
 // Add headers
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
   //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:81');
-  res.setHeader('Access-Control-Allow-Origin', 'https://telegramalyzer.com');
-  
-  
+  // res.setHeader('Access-Control-Allow-Origin', 'https://telegramalyzer.com');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');

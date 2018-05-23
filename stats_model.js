@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 //Create new Schema for statistics
 var statsSchema = new Schema({
-    avgChart: String,
+    avgChart: [],
     pieChartData: [Number],
     pieChartLabel: [String],
     allDaysChartData: [Number],

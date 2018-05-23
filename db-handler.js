@@ -64,6 +64,7 @@ function saveStatsToDB(req, res, next) {
             allDaysChartData: req.parsedChart.allDaysChartData, allDaysChartLabel: req.parsedChart.allDaysChartLabel,
             monthsChartData: req.parsedChart.monthsChartData, monthsChartLabel: req.parsedChart.monthsChartLabel,
             weekdayChartData: req.parsedChart.weekdayChartData, weekdayChartLabel: req.parsedChart.weekdayChartLabel,
+            hourChartData: req.parsedChart.hourChartData, hourChartLabel: req.parsedChart.hourChartLabel,
             emojiChartData: req.parsedChart.emojiChartData,
             heartNumber: req.parsedChart.heartNumber
         });

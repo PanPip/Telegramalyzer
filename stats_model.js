@@ -12,6 +12,8 @@ var statsSchema = new Schema({
     monthsChartLabel: [String],
     weekdayChartData: [Number],
     weekdayChartLabel: [String],
+    hourChartData: [Number],
+    hourChartLabel: [String],
     heartNumber:String,
     emojiChartData:[],
     date: { type: Date, default: Date.now },

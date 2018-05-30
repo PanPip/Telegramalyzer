@@ -136,7 +136,7 @@ function returnStats(req, res) {
         Stats.find({ _id: req.params.id }, function (error, results) {
             if (error) {
                 console.log(error)
-                res.send("An error occured")
+                res.send("ID_invalid")
             }
             else {
 

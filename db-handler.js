@@ -130,14 +130,13 @@ function returnStats(req, res) {
 
         Stats.find({ _id: req.params.id }, function (error, results) {
             if (error) {
-                //throw ('DB-Error or Schema-Error')
                 console.log(error)
                 res.send("An error occured")
             }
             else {
 
                 if (results.length < 1 || results == null) {
-                    res.send("An error occured - Possibily an invalid id")
+                    res.send("ID_invalid")
                 }
                 else {
                     res.send(results[0])

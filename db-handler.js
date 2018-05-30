@@ -8,6 +8,18 @@ var Stats = require('./stats_model.js')
 
 var db_name = "tele"
 
+var schedule = require('node-schedule');
+
+
+//Creating cleanup rule
+var rule = new schedule.RecurrenceRule();
+rule.hour = 23;
+rule.minute = 00;
+
+var cleanup = schedule.scheduleJob(rule, function () {
+    deleteOlderEntries()
+});
+
 
 //take advantage of openshift env vars when available:
 if (process.env.MONGODB_SERVICE_HOST) {
@@ -44,13 +56,20 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 
-// // find all athletes who play tennis, selecting the 'name' and 'age' fields
-// Stats.find({ 'avgChart': 'test123' }, 'date', function (err, charts) {
-//     if (err) return handleError(err);
-//     // 'athletes' contains the list of athletes that match the criteria.
-//     console.log(charts)
-//     mongoose.disconnect()
-// })
+function deleteOlderEntries() {
+    var date = new Date();
+    var daysToDeletion = 7;
+    var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
+
+
+    console.log("Deleting entries that are older than "+daysToDeletion+" days")
+
+    Stats.deleteMany({date : {$lt : deletionDate}}, function(err){
+        console.log(err)
+    })
+
+
+}
 
 function saveStatsToDB(req, res, next) {
 
@@ -100,15 +119,6 @@ function returnID(req, res) {
 
     res.send(req.savedInstaceId)
 
-    // Stats.find({ avgChart: req.parsedChart.avgChart }, function (error, results) {
-    //     if (error) {
-    //         throw ('DB-Error or Schema-Error')
-    //         res.send("An error occured")
-    //     }
-    //     else{
-    //         res.send(results[0]._id)
-    //     }
-    // })
 
 }
 

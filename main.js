@@ -59,18 +59,21 @@ if (process.env.TELEG_SERVICE_PORT_WEB) {
   //var server_ip_address = process.env.TELEGRAMALYZER_SERVER_SERVICE_HOST
   var server_ip_address = '0.0.0.0'
 
+  app.listen(server_port, server_ip_address, function () {
+    console.log("Listening on " + server_ip_address + ", port " + server_port)
+  });
+
 }
 else{
   var server_port =  '127.0.0.1'
   var server_ip_address = 3000
+
+  app.listen(server_ip_address, function() {
+    console.log('Telegramalyzer server started');
+  });
 }
 
 
 
-app.listen(server_port, server_ip_address, function () {
-  console.log("Listening on " + server_ip_address + ", port " + server_port)
-});
 
-// app.listen(3000, function() {
-//     console.log('Example app listening on port 3000!');
-//   });
+

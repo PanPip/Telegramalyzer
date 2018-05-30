@@ -1,10 +1,11 @@
+console.log("Attempting to start application")
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var RateLimit = require('express-rate-limit');
 
 var handler = require('./router.js');
-
 
 
 app.enable('trust proxy'); // only if you're behind a reverse proxy (Heroku, Bluemix, AWS if you use an ELB, custom Nginx setup, etc)

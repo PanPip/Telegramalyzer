@@ -44,7 +44,12 @@ var authMechanism = 'DEFAULT';
 //Set up default mongoose connection
 var mongoDB = f('mongodb://%s:%s@%s?authMechanism=%s',
     user, password, mongodb_connection_string, authMechanism);
-mongoose.connect(mongoDB);
+
+mongoose.connect(mongoDB)
+.catch(err => {
+    console.log("There was an error when trying to connect to MongoDB")
+})
+    ;
 
 // Get Mongoose to use the global promise library
 mongoose.Promise = global.Promise;
@@ -62,9 +67,9 @@ function deleteOlderEntries() {
     var deletionDate = new Date(date.setDate(date.getDate() - daysToDeletion));
 
 
-    console.log("Deleting entries that are older than "+daysToDeletion+" days")
+    console.log("Deleting entries that are older than " + daysToDeletion + " days")
 
-    Stats.deleteMany({date : {$lt : deletionDate}}, function(err){
+    Stats.deleteMany({ date: { $lt: deletionDate } }, function (err) {
         console.log(err)
     })
 
